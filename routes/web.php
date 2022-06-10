@@ -23,6 +23,7 @@ use App\Http\Controllers\DashboardController;
 Route::get('/', [HomeController::class, 'index'])->name('home');
 
 Route::get('/blog', [BlogController::class, 'index'])->name('blog');
+Route::get('/{post:slug}', [BlogController::class, 'show'])->name('blog.show');
 
 Route::group(['middleware' => ['auth'], 'prefix' => 'dashboard'], function () {
 
@@ -58,6 +59,6 @@ Route::group(['middleware' => ['auth'], 'prefix' => 'dashboard'], function () {
         Route::post('/', [PostController::class, 'store'])->name('store');
         Route::get('{post:slug}/edit', [PostController::class, 'edit'])->name('edit');
         Route::put('{post:slug}', [PostController::class, 'update'])->name('update');
-        Route::get('{post:slug}', [PostController::class, 'show'])->name('show');
+       // Route::get('{post:slug}', [PostController::class, 'show'])->name('show');
     });
 });
